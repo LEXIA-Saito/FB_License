@@ -1,6 +1,6 @@
 // DOM要素を取得
 const transactionForm = document.getElementById('transaction-form');
-const dateInput = document.getElementById('date');
+const dateInput = document.getElementById('date'); // type="text" に変わる
 const categorySelect = document.getElementById('category');
 const amountInput = document.getElementById('amount');
 const memoInput = document.getElementById('memo');
@@ -32,6 +32,9 @@ let editingTransactionId = null;
 // 編集中の行要素を保持する変数
 let editingRowElement = null;
 
+// Flatpickrインスタンスを保持する変数 (★追加★)
+let datePicker = null;
+
 // Chart.js インスタンスを保持する変数も不要
 // let monthlyBalanceChart = null;
 
@@ -55,6 +58,8 @@ function loadTransactions() {
                   // console.warn("金額が数値でないデータが見つかりました。数に変換します。", t);
                   t.amount = parseFloat(t.amount) || 0; // 数値に変換できない場合は0に
              }
+             // 日付が妥当な形式か確認（Flatpickrの形式 'Y/m/d' を想定）
+             // 必要に応じて、古い形式のデータを新しい形式に変換するロジックを追加することも可能
         });
         // console.log('データ読み込み完了:', transactions);
     } else {
@@ -82,7 +87,9 @@ function renderTable() {
     transactionTableBody.innerHTML = '';
 
     // データを日付の新しい順にソート
-    const sortedTransactions = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
+    // 日付が文字列 (Y/m/d または YYYY-MM-DD) になったため、Dateオブジェクトに変換して比較
+    const sortedTransactions = [...transactions].sort((a, b) => new Date(b.date.replace(/\//g, '-')) - new Date(a.date.replace(/\//g, '-')));
+
 
     // 各データをテーブルの行として追加
     sortedTransactions.forEach(transaction => {
@@ -91,7 +98,7 @@ function renderTable() {
         // 各セルを作成しデータを挿入
         // レスポンシブ対応のためにdata-label属性を追加
         row.insertCell(0).setAttribute('data-label', '日付');
-        row.cells[0].textContent = transaction.date;
+        row.cells[0].textContent = transaction.date; // 日付文字列をそのまま表示
 
         row.insertCell(1).setAttribute('data-label', 'カテゴリ');
         row.cells[1].textContent = transaction.category;
@@ -162,7 +169,9 @@ function renderSummary() {
 
     // 今月の合計とカテゴリ別集計を同時に集計
     transactions.forEach(transaction => {
-        const transactionDate = new Date(transaction.date);
+        // 日付文字列を Date オブジェクトに変換
+        // Y/m/d 形式の場合に対応するため / を - に置換
+        const transactionDate = new Date(transaction.date.replace(/\//g, '-'));
         // Dateオブジェクトの生成に失敗した場合（不正な日付など）はスキップ
         if (isNaN(transactionDate.getTime())) {
              console.warn("不正な日付のデータが見つかりました:", transaction);
@@ -194,28 +203,15 @@ function renderSummary() {
         }
 
         // 月ごとの収支データを集計するロジック全体は不要
-        /*
-        const yearMonth = `${year}-${('0' + (month + 1)).slice(-2)}`; // "YYYY-MM" 形式
-        if (!monthlyData[yearMonth]) {
-            monthlyData[yearMonth] = { income: 0, expense: 0, balance: 0 };
-        }
-        if (amount > 0) {
-             monthlyData[yearMonth].income += amount;
-        } else {
-             monthlyData[yearMonth].expense += Math.abs(amount);
-        }
-        monthlyData[yearMonth].balance = monthlyData[yearMonth].income - monthlyData[yearMonth].expense;
-        */
     });
 
 
     // 月別合計結果の表示を更新
     totalIncomeSpan.textContent = totalIncome.toLocaleString();
     totalExpenseSpan.textContent = totalExpense.toLocaleString();
-    // balanceSpan.textContent = balance.toLocaleString(); // ★balanceの計算は次の行で行われています★
 
-    const balance = totalIncome - totalExpense; // ★balance の計算はここで行われています★
-    balanceSpan.textContent = balance.toLocaleString(); // ★balance の表示を更新★
+    const balance = totalIncome - totalExpense; // balance の計算
+    balanceSpan.textContent = balance.toLocaleString(); // balance の表示を更新
 
 
      if (balance < 0) {
@@ -228,7 +224,6 @@ function renderSummary() {
     renderCategorySummary(categoryExpenses); // 集計したデータを渡す
 
     // 月ごとの収支推移グラフを描画する関数呼び出しは不要
-    // renderMonthlyBalanceChart(monthlyData);
 }
 
 // カテゴリ別支出集計を表示する関数
@@ -258,13 +253,8 @@ function renderCategorySummary(categoryExpenses) { // 引数を受け取る
     }
 }
 
-
 // 月ごとの収支を計算しグラフを描画する関数 renderMonthlyBalanceChart 全体は不要
-/*
-function renderMonthlyBalanceChart(monthlyData) {
-    // ... (関数の中身全体を削除またはコメントアウト) ...
-}
-*/
+// (関数全体が削除またはコメントアウトされていることを想定)
 
 
 // --- データ追加 または 更新 ---
@@ -272,13 +262,23 @@ transactionForm.addEventListener('submit', function(event) {
     event.preventDefault();
     // console.log('フォーム送信イベント発生');
 
-    const date = dateInput.value;
+    // Flatpickr インスタンスから選択された日付の配列を取得 (★変更★)
+    const selectedDates = datePicker.selectedDates;
+    if (selectedDates.length === 0) {
+         alert('日付を選択してください。'); // 日付が選択されていない場合
+         return;
+    }
+    // Flatpickr で指定した形式（例: 'Y/m/d'）で日付文字列を取得 (★変更★)
+    const date = datePicker.formatDate(selectedDates[0], datePicker.config.dateFormat); // 設定した dateFormat を使う
+
+
     const category = categorySelect.value;
     const amount = parseFloat(amountInput.value);
     const memo = memoInput.value.trim();
 
-    if (!date || !category || amount <= 0 || isNaN(amount)) { // ★NaNチェックを追加★
-        alert('日付、カテゴリ、金額を入力してください。（金額は正の数で）');
+    // カテゴリ、金額の必須入力・数値チェック (★変更 - 日付チェックは上記で完了★)
+    if (!category || amount <= 0 || isNaN(amount)) {
+        alert('カテゴリ、金額を入力してください。（金額は正の数で）');
         // console.warn('必須入力チェック失敗');
         return;
     }
@@ -289,10 +289,10 @@ transactionForm.addEventListener('submit', function(event) {
         // --- 更新処理 ---
         // console.log('更新処理実行 (ID:', editingTransactionId, ')');
         transactions = transactions.map(transaction => {
-            if (transaction.id === editingTransactionId) {
+            if (String(transaction.id) === String(editingTransactionId)) { // ID比較を文字列で
                 return {
                     ...transaction, // 元のidを残す
-                    date: date,
+                    date: date, // カスタムピッカーから取得した日付文字列 (★変更★)
                     category: category,
                     amount: transactionAmount, // 更新された金額と収支区分
                     memo: memo
@@ -308,8 +308,8 @@ transactionForm.addEventListener('submit', function(event) {
         // --- 追加処理 ---
         // console.log('追加処理実行');
         const newTransaction = {
-            id: Date.now() + Math.random(), // ★ユニーク性を高めるため乱数を追加★
-            date: date,
+            id: Date.now() + Math.random(), // ユニーク性を高めるため乱数を追加
+            date: date, // カスタムピッカーから取得した日付文字列 (★変更★)
             category: category,
             amount: transactionAmount,
             memo: memo
@@ -320,15 +320,17 @@ transactionForm.addEventListener('submit', function(event) {
 
     saveTransactions();
 
-    // 表示を更新（renderSummaryがカテゴリ別も更新、グラフは削除）
+    // 表示を更新（renderSummaryがカテゴリ別も更新）
     renderTable();
-    renderSummary(); // renderSummary() がカテゴリ別集計を更新します
+    renderSummary();
 
     // 追加処理後は endEditing() が呼ばれないので、ここでフォームリセット
     if (editingTransactionId === null) {
          transactionForm.reset();
-         dateInput.valueAsDate = new Date(); // 日付を今日に戻す
+         // Flatpickrで日付を今日に戻す (★変更★)
+         datePicker.setDate(new Date());
          categorySelect.value = ""; // カテゴリを選択してください に戻す
+         // 金額、メモは reset() で空になる
     }
 });
 
@@ -337,7 +339,7 @@ transactionForm.addEventListener('submit', function(event) {
 function deleteTransaction(id) {
     // console.log('削除処理開始 (ID:', id, ')');
     if (confirm('この明細を削除してもよろしいですか？')) {
-        transactions = transactions.filter(transaction => String(transaction.id) !== String(id)); // ★ID比較を文字列で★
+        transactions = transactions.filter(transaction => String(transaction.id) !== String(id)); // ID比較を文字列で
         saveTransactions();
 
         // 削除したデータが編集中のものだった場合、編集モードを終了
@@ -345,9 +347,9 @@ function deleteTransaction(id) {
              endEditing();
         }
 
-        // 表示を更新（renderSummaryがカテゴリ別も更新、グラフは削除）
+        // 表示を更新（renderSummaryがカテゴリ別も更新）
         renderTable();
-        renderSummary(); // renderSummary() がカテゴリ別集計を更新します
+        renderSummary();
         // console.log('削除処理完了');
     } else {
         // console.log('削除キャンセル');
@@ -375,7 +377,10 @@ function startEditing(id, rowElement) {
     }
 
     // フォームにデータを読み込む
-    dateInput.value = transactionToEdit.date;
+    // 日付のセットは Flatpickr インスタンスのメソッドを使う (★変更★)
+    // Flatpickrは 'YYYY-MM-DD' または 'YYYY/MM/DD' 形式の文字列、または Date オブジェクトを受け付ける
+    datePicker.setDate(transactionToEdit.date); // Flatpickrインスタンスを使って日付を設定
+
     categorySelect.value = transactionToEdit.category;
     amountInput.value = Math.abs(transactionToEdit.amount);
     memoInput.value = transactionToEdit.memo;
@@ -406,8 +411,9 @@ function endEditing() {
     }
 
     transactionForm.reset();
-    dateInput.valueAsDate = new Date();
-     categorySelect.value = "";
+    // Flatpickrで日付を今日に戻す (★変更★)
+    datePicker.setDate(new Date()); // Flatpickrインスタンスを使って設定
+    categorySelect.value = "";
 
     submitButton.textContent = '追加';
     submitButton.style.backgroundColor = '#3498db';
@@ -431,11 +437,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // console.log('DOMContentLoaded fired');
     loadTransactions();
 
-    // 初期表示（テーブルと集計）をレンダリング
+    // Flatpickrを初期化 (★追加★)
+    datePicker = flatpickr("#date", { // dateInput 要素 (type="text"になったもの) に紐付け
+        locale: 'ja', // 日本語ロケールを適用
+        dateFormat: "Y/m/d", // アプリ内で使用する日付の形式を指定（例: 2023/10/27）
+        defaultDate: new Date() // 初期値を今日の日付にする
+        // 必要に応じて他のオプションを追加: https://flatpickr.js.org/options/
+        // 例: altInput: true, altFormat: "Y年m月d日", // 別要素に日本語で表示してユーザーに見やすくするなど
+        // appendTo: document.body // モーダルなどで表示が隠れる場合などに
+    });
+
     renderTable();
-    renderSummary(); // カテゴリ別集計もここで初期表示される
+    renderSummary();
 
-    dateInput.valueAsDate = new Date();
+    // ページロード時の日付の初期値設定はFlatpickrのdefaultDateオプションで済む
+    // dateInput.valueAsDate = new Date(); // これは不要になる
 
+    // 初期ロード時は編集モードではないので、念のため編集モードを終了状態に
     endEditing();
 });
