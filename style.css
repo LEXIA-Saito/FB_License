@@ -60,13 +60,12 @@ h2 {
     color: #555;
 }
 
-/* PC表示や、calc()が適用されない他の要素に共通のスタイル */
-/* width: 100% はここで指定し、モバイルの日付入力だけ calc() で上書きする */
-.form-group input[type="date"],
+/* PC表示や、他の要素に共通のスタイル */
+/* type="text" に変更された日付入力欄もこの共通ルールでスタイルが適用されるようにする */
 .form-group input[type="number"],
-.form-group input[type="text"],
+.form-group input[type="text"], /* HTMLのinput[type="text"]#dateにマッチ */
 .form-group select {
-    width: 100%; /* 幅100%に（モバイルの日付入力以外はこちらが有効） */
+    width: 100%; /* 幅100%に */
     max-width: 100%; /* 念のため最大幅も指定 */
     padding: 10px; /* パディングを広げる */
     border: 1px solid #bdc3c7; /* ボーダー色を調整 */
@@ -76,9 +75,9 @@ h2 {
     transition: border-color 0.3s ease; /* フォーカス時のアニメーション */
 }
 
-.form-group input[type="date"]:focus,
+/* フォーカス時のスタイルも input[type="text"] に変更 */
 .form-group input[type="number"]:focus,
-.form-group input[type="text"]:focus,
+.form-group input[type="text"]:focus, /* HTMLのinput[type="text"]#date:focusにマッチ */
 .form-group select:focus {
     border-color: #3498db; /* フォーカス時に青く光る */
     outline: none; /* デフォルトのアウトラインを消す */
@@ -260,30 +259,24 @@ h2 {
          margin-bottom: 15px;
      }
 
-    /* ★ここから変更点★ */
-
-    /* 日付入力欄専用のスタイル（モバイル用） */
-    /* widthをcalc()で調整するのは日付入力欄のみ */
-    .form-group input[type="date"] {
-        /*width: calc(100% - 16px); /* 日付入力欄だけ幅を調整 */
-        /* max-widthとbox-sizingは上の一般ルールから継承されるが、念のため再宣言 */
+    /* ★変更点★ */
+    /* type="date"特有のcalc()での幅調整は不要になったため、このブロックは削除。 */
+    /* 日付入力欄 (input[type="text"]#date) は、下の共通ルールでまとめてスタイリングされる。 */
+    /* .form-group input[type="date"] {
         max-width: 100%;
         box-sizing: border-box;
-        /* paddingとfont-sizeは下の共通ルールで指定 */
-    }
+    } */
 
     /* 全ての入力要素、セレクトボックス、ボタンに適用するモバイル用スタイル */
-    /* 主にpaddingとfont-sizeを設定。幅は一般ルールまたは上記の日付入力専用ルールが優先される。*/
-    .form-group input[type="date"], /* 日付入力欄もpadding/font-sizeはこちらの共通ルールで指定 */
+    /* input[type="text"]になった日付入力欄もこのルールでスタイルが適用される */
     .form-group input[type="number"],
-    .form-group input[type="text"],
+    .form-group input[type="text"], /* HTMLのinput[type="text"]#dateにマッチ */
     .form-group select,
     .form-section button[type="submit"] {
         padding: 10px; /* モバイル用パディング */
         font-size: 1rem; /* モバイル用フォントサイズ */
-        /* width: 100%; と書くと日付入力の calc() を上書きしてしまうので書かない */
-        /* max-width: 100%; */ /* 重複になるので省略可 */
-        /* box-sizing: border-box; */ /* 重複になるので省略可 */
+        /* 幅は上のPC/共通スタイルで width: 100%; max-width: 100%; box-sizing: border-box; が適用されるので、 */
+        /* ここでは特に指定しなくても良いが、必要なら再宣言しても可 */
     }
 
     /* ★ここまで変更点★ */
