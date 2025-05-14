@@ -65,6 +65,7 @@ h2 {
 .form-group input[type="text"],
 .form-group select {
     width: 100%; /* 幅100%に */
+    max-width: 100%;
     padding: 10px; /* パディングを広げる */
     border: 1px solid #bdc3c7; /* ボーダー色を調整 */
     border-radius: 4px;
