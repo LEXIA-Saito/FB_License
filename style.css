@@ -265,7 +265,7 @@ h2 {
     /* 日付入力欄専用のスタイル（モバイル用） */
     /* widthをcalc()で調整するのは日付入力欄のみ */
     .form-group input[type="date"] {
-        width: calc(100% - 20px); /* 日付入力欄だけ幅を調整 */
+        width: calc(100% - 16px); /* 日付入力欄だけ幅を調整 */
         /* max-widthとbox-sizingは上の一般ルールから継承されるが、念のため再宣言 */
         max-width: 100%;
         box-sizing: border-box;
