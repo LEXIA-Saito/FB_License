@@ -60,16 +60,18 @@ h2 {
     color: #555;
 }
 
+/* PC表示や、calc()が適用されない他の要素に共通のスタイル */
+/* width: 100% はここで指定し、モバイルの日付入力だけ calc() で上書きする */
 .form-group input[type="date"],
 .form-group input[type="number"],
 .form-group input[type="text"],
 .form-group select {
-    width: 100%; /* 幅100%に */
-    max-width: 100%;
+    width: 100%; /* 幅100%に（モバイルの日付入力以外はこちらが有効） */
+    max-width: 100%; /* 念のため最大幅も指定 */
     padding: 10px; /* パディングを広げる */
     border: 1px solid #bdc3c7; /* ボーダー色を調整 */
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
     font-size: 1rem;
     transition: border-color 0.3s ease; /* フォーカス時のアニメーション */
 }
@@ -85,7 +87,7 @@ h2 {
 
 .form-section button[type="submit"] {
     display: block;
-    width: 100%;
+    width: 100%; /* ボタンも基本100% */
     padding: 12px; /* パディングを広げる */
     background-color: #3498db; /* 少し明るい青 */
     color: white;
@@ -258,14 +260,34 @@ h2 {
          margin-bottom: 15px;
      }
 
-    .form-group input[type="date"],
+    /* ★ここから変更点★ */
+
+    /* 日付入力欄専用のスタイル（モバイル用） */
+    /* widthをcalc()で調整するのは日付入力欄のみ */
+    .form-group input[type="date"] {
+        width: calc(100% - 20px); /* 日付入力欄だけ幅を調整 */
+        /* max-widthとbox-sizingは上の一般ルールから継承されるが、念のため再宣言 */
+        max-width: 100%;
+        box-sizing: border-box;
+        /* paddingとfont-sizeは下の共通ルールで指定 */
+    }
+
+    /* 全ての入力要素、セレクトボックス、ボタンに適用するモバイル用スタイル */
+    /* 主にpaddingとfont-sizeを設定。幅は一般ルールまたは上記の日付入力専用ルールが優先される。*/
+    .form-group input[type="date"], /* 日付入力欄もpadding/font-sizeはこちらの共通ルールで指定 */
     .form-group input[type="number"],
     .form-group input[type="text"],
     .form-group select,
-     .form-section button[type="submit"] {
-        padding: 10px; /* パディングを調整 */
-        font-size: 1rem;
-     }
+    .form-section button[type="submit"] {
+        padding: 10px; /* モバイル用パディング */
+        font-size: 1rem; /* モバイル用フォントサイズ */
+        /* width: 100%; と書くと日付入力の calc() を上書きしてしまうので書かない */
+        /* max-width: 100%; */ /* 重複になるので省略可 */
+        /* box-sizing: border-box; */ /* 重複になるので省略可 */
+    }
+
+    /* ★ここまで変更点★ */
+
 
     /* 集計セクション */
      .summary-section p {
