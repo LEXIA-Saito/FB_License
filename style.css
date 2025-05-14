@@ -1,0 +1,351 @@
+/* 基本的なスタイルとリセット */
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif; /* Google Fontsとシステムフォントを指定 */
+    line-height: 1.6; /* 行間を調整 */
+    background-color: #eef2f7; /* ほんのり青みがかったグレー背景 */
+    padding: 20px;
+    color: #333; /* 基本的なテキスト色 */
+}
+
+.container {
+    max-width: 960px; /* 少し広げる */
+    margin: 0 auto; /* 中央寄せ */
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50; /* 濃い青系の色 */
+    margin-top: 0;
+    margin-bottom: 40px; /* 余白を広げる */
+    font-weight: 700; /* 太字 */
+    font-family: 'Roboto', sans-serif; /* タイトル用のフォント（任意） */
+}
+
+h2 {
+    color: #34495e; /* 少し薄い青系の色 */
+    border-bottom: none; /* 下線をなくす */
+    padding-bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* 各セクション共通のカードスタイル */
+.section {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を柔らかく */
+    border-radius: 8px;
+    padding: 20px; /* セクション内のパディング */
+    margin-bottom: 30px; /* 各セクション間の下余白 */
+}
+
+/* 最後のセクションの下余白は不要 */
+.section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* フォームセクション内の調整 */
+/* .form-section は .section スタイルを継承・利用 */
+.form-group {
+    margin-bottom: 20px; /* 余白を少し広げる */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* 余白を少し広げる */
+    font-weight: 700; /* ラベルを太字に */
+    color: #555;
+}
+
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group select {
+    width: 100%; /* 幅100%に */
+    padding: 10px; /* パディングを広げる */
+    border: 1px solid #bdc3c7; /* ボーダー色を調整 */
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease; /* フォーカス時のアニメーション */
+}
+
+.form-group input[type="date"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    border-color: #3498db; /* フォーカス時に青く光る */
+    outline: none; /* デフォルトのアウトラインを消す */
+}
+
+
+.form-section button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px; /* パディングを広げる */
+    background-color: #3498db; /* 少し明るい青 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.form-section button[type="submit"]:hover {
+    background-color: #2980b9; /* ホバー時 */
+}
+
+
+/* 集計セクション */
+.summary-section {
+     background-color: #ecf0f1; /* 薄いグレーの背景 */
+     border: 1px solid #bdc3c7; /* 控えめなボーダー */
+     /* .section スタイルを継承・利用 */
+}
+
+.summary-section h2 {
+     color: #2c3e50; /* タイトル色 */
+     margin-top: 0; /* 上の余白をなくす（カードスタイルとの兼ね合い） */
+}
+
+.summary-section p {
+    margin: 8px 0; /* 行間の余白を調整 */
+    font-size: 1.1rem;
+}
+
+.summary-section span {
+    font-weight: 700; /* 太字 */
+    margin-left: 5px; /* 値の左に少し余白 */
+}
+
+#total-income {
+    color: #27ae60; /* 収入は緑 */
+}
+
+#total-expense {
+    color: #e74c3c; /* 支出は赤 */
+}
+
+#balance {
+    color: #3498db; /* 収支は青 */
+    font-size: 1.3rem; /* 少し大きめに */
+}
+
+
+/* データ表示テーブル */
+.data-section {
+    overflow-x: auto; /* テーブルがはみ出る場合にスクロールバーを表示 */
+    /* .section スタイルを継承・利用 */
+}
+
+.data-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* 見出しとの余白 */
+    min-width: 600px; /* 狭い画面でもテーブルが潰れすぎないように最小幅 */
+}
+
+.data-section th,
+.data-section td {
+    border: 1px solid #ddd;
+    padding: 12px 10px; /* パディングを調整 */
+    text-align: left;
+}
+
+.data-section th {
+    background-color: #f8f8f8; /* ヘッダー背景を薄いグレーに */
+    font-weight: 700;
+    color: #555;
+    border-bottom: 2px solid #bdc3c7; /* ヘッダーの下線を強調 */
+}
+
+.data-section td {
+    border-bottom: 1px solid #eee; /* 行の区切り線 */
+}
+
+.data-section tbody tr:nth-child(even) { /* 偶数行の背景色 */
+    background-color: #f9f9f9;
+}
+
+.data-section tbody tr:hover { /* ホバー時の背景色 */
+    background-color: #f0f0f0; /* 少し濃いグレー */
+    cursor: pointer; /* クリックできることを示すカーソル */
+}
+
+.data-section td:last-child { /* 操作列の中央寄せ */
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #e74c3c; /* 赤色 */
+    color: white;
+    border: none;
+    padding: 6px 12px; /* パディング調整 */
+    border-radius: 4px;
+    cursor: pointer; /* ボタン上では常にポインター */
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b; /* ホバー時 */
+}
+
+/* 編集中の行のスタイル */
+.data-section tbody tr.editing-row {
+    background-color: #ffeeba; /* 薄い黄色など、編集中の分かりやすい色 */
+    /* 必要であればボーダーや影なども */
+}
+
+
+/* キャンセルボタンのスタイル */
+/* もしHTMLに追加した場合に有効にする */
+/*
+#cancel-button {
+    display: none; // 最初は非表示
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+#cancel-button:hover {
+    background-color: #5a6268;
+}
+*/
+
+
+/* レスポンシブ対応（画面幅が狭い場合） */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* 全体のパディングを減らす */
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .section {
+         padding: 15px; /* カードのパディングを調整 */
+         margin-bottom: 20px; /* セクション間の余白を調整 */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* タイトルを小さく */
+        margin-bottom: 30px;
+    }
+
+     h2 {
+         font-size: 1.3rem; /* 見出しを小さく */
+         margin-top: 20px;
+         margin-bottom: 15px;
+     }
+
+
+    /* フォーム要素 */
+     .form-group {
+         margin-bottom: 15px;
+     }
+
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group input[type="text"],
+    .form-group select,
+     .form-section button[type="submit"] {
+        padding: 10px; /* パディングを調整 */
+        font-size: 1rem;
+     }
+
+    /* 集計セクション */
+     .summary-section p {
+         font-size: 1rem;
+         margin: 6px 0;
+     }
+
+     #balance {
+         font-size: 1.1rem;
+     }
+
+
+    /* データテーブルの表示方法を変更（縦に積み重ねる） */
+    .data-section table,
+    .data-section thead,
+    .data-section tbody,
+    .data-section th,
+    .data-section td,
+    .data-section tr {
+        display: block; /* テーブル要素をブロック要素に */
+    }
+
+    .data-section table {
+        min-width: auto; /* 最小幅をリセット */
+    }
+
+    .data-section thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; /* ヘッダーを非表示に */
+    }
+
+    .data-section tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px; /* 行間の余白を調整 */
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 各行にも軽い影 */
+        padding: 10px; /* 各行の内側余白 */
+    }
+
+    .data-section td {
+        border: none; /* セル間のボーダーをなくす */
+        border-bottom: 1px solid #eee; /* 行内の区切り線 */
+        position: relative;
+        padding-left: 50%; /* ラベル分のスペースを確保 */
+        text-align: right; /* 値を右寄せ */
+        font-size: 0.95rem;
+    }
+
+    .data-section td:last-child {
+        border-bottom: none; /* 最後のセル（操作）の下線はなし */
+    }
+
+    .data-section td:before { /* ラベルを表示 */
+        position: absolute;
+        top: 10px; /* 上からの位置を調整 */
+        left: 10px; /* 左からの位置を調整 */
+        width: 40%; /* ラベルの幅 */
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 700; /* 太字に */
+        color: #555; /* ラベルの色 */
+        content: attr(data-label); /* data-label属性の値を表示 */
+        text-align: left; /* ラベルを左寄せ */
+    }
+
+    /* 各列のラベルを設定 */
+    .data-section td:nth-of-type(1):before { content: "日付"; }
+    .data-section td:nth-of-type(2):before { content: "カテゴリ"; }
+    .data-section td:nth-of-type(3):before { content: "金額"; }
+    .data-section td:nth-of-type(4):before { content: "摘要"; }
+    .data-section td:nth-of-type(5):before { content: "操作"; }
+
+    .data-section td:last-child { /* 操作列 */
+         text-align: right;
+    }
+
+    /* 削除ボタン */
+    .delete-button {
+         padding: 8px 15px; /* パディングを調整 */
+         font-size: 1rem;
+         /* レスポンシブ時の位置調整が必要であればここに追加 */
+    }
+}
