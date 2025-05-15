@@ -3,42 +3,63 @@ body {
     margin: 0;
     font-family: 'Noto Sans JP', sans-serif; /* Google Fontsとシステムフォントを指定 */
     line-height: 1.6; /* 行間を調整 */
-    background-color: #eef2f7; /* ほんのり青みがかったグレー背景 */
+    background-color: #FAF9F7; /* ほんのり青みがかったグレー背景 */
     padding: 20px;
-    color: #333; /* 基本的なテキスト色 */
+    color: #000000; /* 基本的なテキスト色 */
+}
+
+body.darkmode {
+    background-color: #000000;
+    color: #FAF9F7;
 }
 
 .container {
     max-width: 960px; /* 少し広げる */
     margin: 0 auto; /* 中央寄せ */
     padding: 20px;
+    background: transparent;
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50; /* 濃い青系の色 */
+    color: #000000; /* 濃い青系の色 */
     margin-top: 0;
     margin-bottom: 40px; /* 余白を広げる */
     font-weight: 700; /* 太字 */
     font-family: 'Roboto', sans-serif; /* タイトル用のフォント（任意） */
+    border-bottom: 2px solid #8C999B;
 }
 
 h2 {
-    color: #34495e; /* 少し薄い青系の色 */
-    border-bottom: none; /* 下線をなくす */
+    color: #000000; /* 少し薄い青系の色 */
+    border-bottom: 2px solid #8C999B; /* 下線をなくす */
     padding-bottom: 0;
     margin-top: 30px;
     margin-bottom: 20px;
     font-weight: 700;
 }
 
+body.darkmode h1, body.darkmode h2, body.darkmode th {
+    color: #FAF9F7;
+    border-bottom: 2px solid #8C999B;
+}
+
 /* 各セクション共通のカードスタイル */
 .section {
-    background-color: #fff;
+    background-color: #E7E6E2;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を柔らかく */
     border-radius: 8px;
     padding: 20px; /* セクション内のパディング */
     margin-bottom: 30px; /* 各セクション間の下余白 */
+    border: 2px solid #8C999B;
+    color: #000000;
+}
+
+body.darkmode .section {
+    background: #000000;
+    color: #FAF9F7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-color: #8C999B;
 }
 
 /* 最後のセクションの下余白は不要 */
@@ -60,37 +81,68 @@ h2 {
     color: #555;
 }
 
-/* PC表示や、他の要素に共通のスタイル */
-/* type="text" に変更された日付入力欄もこの共通ルールでスタイルが適用されるようにする */
+body.darkmode .form-group label,
+body.darkmode .form-section button,
+body.darkmode .delete-button,
+body.darkmode .edit-button,
+body.darkmode #cancel-edit-button {
+    color: #23272f;
+}
+
+body.darkmode .form-group label {
+    color: #f1f1f1 !important;
+}
+
+body.darkmode .form-group input[type="date"],
+body.darkmode .form-group input[type="number"],
+body.darkmode .form-group input[type="text"],
+body.darkmode .form-group select {
+    background: #000000;
+    color: #FAF9F7;
+    border: 1px solid #888;
+}
+
+.form-group input[type="date"],
 .form-group input[type="number"],
-.form-group input[type="text"], /* HTMLのinput[type="text"]#dateにマッチ */
+.form-group input[type="text"],
 .form-group select {
     width: 100%; /* 幅100%に */
-    max-width: 100%; /* 念のため最大幅も指定 */
     padding: 10px; /* パディングを広げる */
-    border: 1px solid #bdc3c7; /* ボーダー色を調整 */
+    border: none;
+    border-bottom: 2px solid #8C999B;
     border-radius: 4px;
-    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    box-sizing: border-box;
     font-size: 1rem;
     transition: border-color 0.3s ease; /* フォーカス時のアニメーション */
 }
 
-/* フォーカス時のスタイルも input[type="text"] に変更 */
+body.darkmode input,
+body.darkmode select {
+    background: #000000;
+    color: #FAF9F7;
+    border-bottom: 2px solid #8C999B;
+}
+
+.form-group input[type="date"]:focus,
 .form-group input[type="number"]:focus,
-.form-group input[type="text"]:focus, /* HTMLのinput[type="text"]#date:focusにマッチ */
+.form-group input[type="text"]:focus,
 .form-group select:focus {
-    border-color: #3498db; /* フォーカス時に青く光る */
+    border-bottom: 2px solid #000000; /* フォーカス時に青く光る */
     outline: none; /* デフォルトのアウトラインを消す */
 }
 
+body.darkmode input:focus,
+body.darkmode select:focus {
+    border-bottom: 2px solid #FAF9F7;
+}
 
 .form-section button[type="submit"] {
     display: block;
-    width: 100%; /* ボタンも基本100% */
+    width: 100%;
     padding: 12px; /* パディングを広げる */
-    background-color: #3498db; /* 少し明るい青 */
-    color: white;
-    border: none;
+    background-color: #FAF9F7; /* 少し明るい青 */
+    color: #000000;
+    border: 2px solid #8C999B;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1.1rem;
@@ -98,20 +150,51 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
+body.darkmode .form-section button,
+body.darkmode .delete-button,
+body.darkmode .edit-button,
+body.darkmode #cancel-edit-button {
+    background-color: #000000;
+    border: 2px solid #8C999B;
+    color: #FAF9F7;
+}
+
+button.important, #submit-button, #google-save-btn, #google-load-btn {
+    background: #8C999B;
+    color: #FAF9F7;
+    border-color: #8C999B;
+}
+
+body.darkmode button.important, body.darkmode #submit-button, body.darkmode #google-save-btn, body.darkmode #google-load-btn {
+    background: #8C999B;
+    color: #000000;
+    border-color: #8C999B;
+}
+
 .form-section button[type="submit"]:hover {
-    background-color: #2980b9; /* ホバー時 */
+    background-color: #000000; /* ホバー時 */
+    color: #FAF9F7;
+    border-color: #8C999B;
 }
 
 
 /* 集計セクション */
 .summary-section {
-     background-color: #ecf0f1; /* 薄いグレーの背景 */
-     border: 1px solid #bdc3c7; /* 控えめなボーダー */
+     background-color: #E7E6E2; /* 薄いグレーの背景 */
+     border: 2px solid #8C999B; /* 控えめなボーダー */
      /* .section スタイルを継承・利用 */
+     color: #000000;
+}
+
+body.darkmode .graph-section,
+body.darkmode .budget-section,
+body.darkmode .category-custom-section {
+    background: #000000;
+    color: #FAF9F7;
 }
 
 .summary-section h2 {
-     color: #2c3e50; /* タイトル色 */
+     color: #000000; /* タイトル色 */
      margin-top: 0; /* 上の余白をなくす（カードスタイルとの兼ね合い） */
 }
 
@@ -126,23 +209,29 @@ h2 {
 }
 
 #total-income {
-    color: #27ae60; /* 収入は緑 */
+    color: #8C999B; /* 収入は緑 */
 }
 
 #total-expense {
-    color: #e74c3c; /* 支出は赤 */
+    color: #8C999B; /* 支出は赤 */
 }
 
 #balance {
-    color: #3498db; /* 収支は青 */
+    color: #8C999B; /* 収支は青 */
     font-size: 1.3rem; /* 少し大きめに */
 }
 
+body.darkmode #balance, body.darkmode #total-income, body.darkmode #total-expense {
+    color: #8C999B;
+}
 
 /* データ表示テーブル */
 .data-section {
     overflow-x: auto; /* テーブルがはみ出る場合にスクロールバーを表示 */
     /* .section スタイルを継承・利用 */
+    background: #E7E6E2;
+    border: 2px solid #8C999B;
+    color: #000000;
 }
 
 .data-section table {
@@ -154,20 +243,34 @@ h2 {
 
 .data-section th,
 .data-section td {
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #8C999B;
     padding: 12px 10px; /* パディングを調整 */
     text-align: left;
+    background: transparent;
+    color: inherit;
+}
+
+body.darkmode .data-section th,
+body.darkmode .data-section td {
+    background: #000000;
+    color: #FAF9F7;
+    border-color: #8C999B;
 }
 
 .data-section th {
-    background-color: #f8f8f8; /* ヘッダー背景を薄いグレーに */
+    background-color: transparent; /* ヘッダー背景を薄いグレーに */
     font-weight: 700;
-    color: #555;
-    border-bottom: 2px solid #bdc3c7; /* ヘッダーの下線を強調 */
+    color: #000000;
+    border-bottom: 2px solid #8C999B; /* ヘッダーの下線を強調 */
+}
+
+body.darkmode .data-section th {
+    border-bottom: 2px solid #8C999B;
+    color: #FAF9F7;
 }
 
 .data-section td {
-    border-bottom: 1px solid #eee; /* 行の区切り線 */
+    border-bottom: 1px solid #8C999B; /* 行の区切り線 */
 }
 
 .data-section tbody tr:nth-child(even) { /* 偶数行の背景色 */
@@ -175,8 +278,12 @@ h2 {
 }
 
 .data-section tbody tr:hover { /* ホバー時の背景色 */
-    background-color: #f0f0f0; /* 少し濃いグレー */
+    background-color: #E7E6E2; /* 少し濃いグレー */
     cursor: pointer; /* クリックできることを示すカーソル */
+}
+
+body.darkmode .data-section tbody tr:hover {
+    background: #8C999B;
 }
 
 .data-section td:last-child { /* 操作列の中央寄せ */
@@ -184,9 +291,9 @@ h2 {
 }
 
 .delete-button {
-    background-color: #e74c3c; /* 赤色 */
-    color: white;
-    border: none;
+    background-color: #FAF9F7; /* 赤色 */
+    color: #000000;
+    border: 2px solid #8C999B;
     padding: 6px 12px; /* パディング調整 */
     border-radius: 4px;
     cursor: pointer; /* ボタン上では常にポインター */
@@ -195,7 +302,47 @@ h2 {
 }
 
 .delete-button:hover {
-    background-color: #c0392b; /* ホバー時 */
+    background-color: #000000; /* ホバー時 */
+    color: #FAF9F7;
+}
+
+body.darkmode .delete-button {
+    background: #000000;
+    color: #FAF9F7;
+    border-color: #8C999B;
+}
+
+body.darkmode .delete-button:hover {
+    background: #8C999B;
+    color: #000000;
+}
+
+/* 編集ボタン */
+.edit-button {
+    background-color: #FAF9F7; /* 黄色 */
+    color: #000000;
+    border: 2px solid #8C999B;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 6px;
+    transition: background-color 0.3s ease;
+}
+.edit-button:hover {
+    background-color: #000000;
+    color: #8C999B;
+}
+
+body.darkmode .edit-button {
+    background: #000000;
+    color: #FAF9F7;
+    border-color: #8C999B;
+}
+
+body.darkmode .edit-button:hover {
+    background: #8C999B;
+    color: #000000;
 }
 
 /* 編集中の行のスタイル */
@@ -204,12 +351,13 @@ h2 {
     /* 必要であればボーダーや影なども */
 }
 
+body.darkmode .data-section tbody tr.editing-row {
+    background-color: #444a58;
+}
 
 /* キャンセルボタンのスタイル */
-/* もしHTMLに追加した場合に有効にする */
-/*
-#cancel-button {
-    display: none; // 最初は非表示
+#cancel-edit-button {
+    display: none; /* 初期は非表示 */
     background-color: #6c757d;
     color: white;
     border: none;
@@ -220,12 +368,15 @@ h2 {
     font-weight: 700;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+    width: 100%;
 }
-#cancel-button:hover {
+#cancel-edit-button:hover {
     background-color: #5a6268;
 }
-*/
 
+body.darkmode #budget-alert {
+    color: #ff7675;
+}
 
 /* レスポンシブ対応（画面幅が狭い場合） */
 @media (max-width: 600px) {
@@ -259,28 +410,14 @@ h2 {
          margin-bottom: 15px;
      }
 
-    /* ★変更点★ */
-    /* type="date"特有のcalc()での幅調整は不要になったため、このブロックは削除。 */
-    /* 日付入力欄 (input[type="text"]#date) は、下の共通ルールでまとめてスタイリングされる。 */
-    /* .form-group input[type="date"] {
-        max-width: 100%;
-        box-sizing: border-box;
-    } */
-
-    /* 全ての入力要素、セレクトボックス、ボタンに適用するモバイル用スタイル */
-    /* input[type="text"]になった日付入力欄もこのルールでスタイルが適用される */
+    .form-group input[type="date"],
     .form-group input[type="number"],
-    .form-group input[type="text"], /* HTMLのinput[type="text"]#dateにマッチ */
+    .form-group input[type="text"],
     .form-group select,
-    .form-section button[type="submit"] {
-        padding: 10px; /* モバイル用パディング */
-        font-size: 1rem; /* モバイル用フォントサイズ */
-        /* 幅は上のPC/共通スタイルで width: 100%; max-width: 100%; box-sizing: border-box; が適用されるので、 */
-        /* ここでは特に指定しなくても良いが、必要なら再宣言しても可 */
-    }
-
-    /* ★ここまで変更点★ */
-
+     .form-section button[type="submit"] {
+        padding: 10px; /* パディングを調整 */
+        font-size: 1rem;
+     }
 
     /* 集計セクション */
      .summary-section p {
@@ -293,7 +430,7 @@ h2 {
      }
 
 
-    /* データテーブルの表示方法を変更（縦に積み重ねる） */
+    /* データテーブルの表示方法を変更（縧に積み重ねる） */
     .data-section table,
     .data-section thead,
     .data-section tbody,
@@ -363,5 +500,228 @@ h2 {
          padding: 8px 15px; /* パディングを調整 */
          font-size: 1rem;
          /* レスポンシブ時の位置調整が必要であればここに追加 */
+    }
+
+    .fab-container {
+        bottom: 16px;
+        right: 16px;
+    }
+    .fab-main {
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
+    }
+    .fab-action {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}
+
+/* 不要なコメントや重複を整理し、カテゴリ別集計リストのメッセージ表示用liタグのスタイルを追加 */
+
+.category-summary-list li {
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1rem;
+}
+
+body.darkmode .category-summary-list li {
+    color: #f1f1f1;
+    border-bottom: 1px solid #444;
+}
+
+.category-summary-list li:last-child {
+    border-bottom: none;
+}
+
+.fixed-header-buttons {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 12px;
+}
+
+/* FAB（フローティングアクションボタン）スタイル */
+.fab-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.fab-main {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #8C999B;
+    color: #FAF9F7;
+    font-size: 2rem;
+    border: 2px solid #8C999B;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.fab-main:hover {
+    background: #000000;
+    color: #FAF9F7;
+}
+body.darkmode .fab-main {
+    background: #8C999B;
+    color: #000000;
+    border-color: #8C999B;
+}
+body.darkmode .fab-main:hover {
+    background: #000000;
+    color: #8C999B;
+}
+.fab-actions {
+    display: flex !important;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.25s cubic-bezier(.4,2,.6,1), transform 0.25s cubic-bezier(.4,2,.6,1);
+}
+.fab-container.open .fab-actions {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+.fab-action {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #FAF9F7;
+    color: #8C999B;
+    font-size: 1.4rem;
+    border: 2px solid #8C999B;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.25s cubic-bezier(.4,2,.6,1);
+    opacity: 1;
+    transform: none;
+}
+.fab-action:hover {
+    background: #8C999B;
+    color: #FAF9F7;
+}
+body.darkmode .fab-action {
+    background: #000000;
+    color: #8C999B;
+    border-color: #8C999B;
+}
+body.darkmode .fab-action:hover {
+    background: #8C999B;
+    color: #000000;
+}
+.fab-action:nth-child(1) {
+    transition-delay: 0.05s;
+}
+.fab-action:nth-child(2) {
+    transition-delay: 0.12s;
+}
+@media (max-width: 600px) {
+    .fab-container {
+        bottom: 16px;
+        right: 16px;
+    }
+    .fab-main {
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
+    }
+    .fab-action {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ボタンの共通デザインをsubmit-button風に統一 */
+button,
+input[type="button"],
+input[type="submit"] {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #FAF9F7;
+    color: #000000;
+    border: 2px solid #8C999B;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    margin: 4px 0;
+}
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #000000;
+    color: #FAF9F7;
+    border-color: #8C999B;
+}
+
+/* 追加・設定・キャンセルなどのボタンも統一 */
+#submit-button,
+#cancel-edit-button,
+#add-category-btn,
+#set-category-budget,
+#google-save-btn,
+#google-load-btn {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+#cancel-edit-button {
+    background: #6c757d;
+    color: #fff;
+}
+#cancel-edit-button:hover {
+    background: #495057;
+}
+
+/* FABやFAB内のボタンは例外として個別デザインを維持 */
+.fab-main, .fab-action {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@media (max-width: 600px) {
+    button,
+    input[type="button"],
+    input[type="submit"] {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+    #submit-button,
+    #cancel-edit-button,
+    #add-category-btn,
+    #set-category-budget,
+    #google-save-btn,
+    #google-load-btn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 0;
     }
 }
