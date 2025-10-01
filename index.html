@@ -1,0 +1,891 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-style-type" content="text/css">
+
+<meta name="ROBOTS" content="NOODP,index,follow">
+<meta name="copyright" content="(C)Copyright FUJIFILM Business Innovation Corp. All rights reserved.">
+
+<!-- FB style -->
+<link rel="shortcut icon" href="/resources/jpn/themes/images/bookmarkicon/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/resources/jpn/css/common.css">
+<link rel="stylesheet" type="text/css" href="/resources/jpn/css/local.css">
+<!-- /FB style -->
+
+<!-- FB script -->
+<script type="text/javascript" src="//typesquare.com/3/tsst/script/ja/typesquare.js?5f44669fc3284165a33a4be4ac1e02d5" charset="utf-8"></script>
+<script type="text/javascript" src="/resources/jpn/js/init.js"></script>
+<script type="text/javascript" src="/resources/jpn/js/local.js"></script>
+<script type="text/javascript" src="/resources/jpn/js/libs/muuri.min.js"></script>
+<script type="text/javascript" src="/resources/jpn/js/libs/web-animations.min.js"></script>
+<script type="text/javascript" src="/resources/jpn/js/libs/web-animations.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/resources/jpn/js/libs/muuri.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/ap1/csjs/spf/web/core/lib/theme/jpn/spf_run.js" defer></script>
+<!-- /FB script -->
+
+<style type="text/css">
+<!--
+header #logo {
+    width: 168px;
+}
+header #servNm {
+    height: 1rem;
+}
+header .nav_adjust_top {
+    font-size: 14px;
+}
+.m-breadcrumb {
+    border-top: 0px;
+}
+footer .m-copyright {
+    color: #dcdcdc;
+    margin-bottom: 2.25rem;
+    font-size:14px;
+}
+@media (min-width:768px) {
+    header #nav .utility li {
+        display: inline-block;
+        text-align: left;
+        margin-left: 20px;
+    }
+    header .m-global-header__utils__inner {
+        top: -72px;
+    }
+    header #servNm img[src="/ap1/img/logo_portal_jp.svg"] {
+        width: 146px;
+        height: 14px;
+    }
+    .m-global-header__utils__inner > .m-global-header__links {
+        display: block;
+    }
+    header #servNm > .m-global-header__region {
+        padding-right: 0px;
+    }
+    header #logo,
+    header #servNm {
+        position: relative;
+        z-index: 1;
+    }
+}
+@media (max-width:767px) {
+    header div.m-global-header__head {
+        height: auto !important;
+        padding-top: 0px;
+    }
+    header div.m-global-header__head > .m-global-header__head__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    header div.m-global-header__head div.l-flex #logo {
+        width: 108px;
+    }
+    header div.m-global-header__head div.l-flex #servNm {
+        height: 2rem;
+        padding-top: 1rem;
+    }
+    header div.m-global-header__head div.l-flex #servNm img {
+        height: 16px;
+    }
+    header + * {
+        padding-top: 3rem;
+    }
+    .m-breadcrumb{
+        display:none;
+    }
+}
+-->
+</style>
+
+  <title>ソフトウェアライセンスの使用情報管理</title> 
+  <!-- ここに必要に応じてメタ情報を記述してください   --> 
+  <!-- ここに必要に応じてStylesheetを記述してください --> 
+  <!-- ここに必要に応じてJavaScriptを記述してください --> 
+  <link rel="stylesheet" type="text/css" href="/ap1/css/spf/web/front/spf-web.min.css" /> 
+  <!-- ここに必要に応じてJavaScriptを記述してください --> 
+
+
+</head>
+
+<body id="sup">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WNL2V9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNL2V9');</script>
+<!-- End Google Tag Manager -->
+<!-- onetrust Tag -->
+<script type="text/javascript" src="/ap1/csjs/spf/web/common/onetrust.js"></script>
+<!-- End onetrust Tag -->
+
+<header class="m-global-header">
+    <div class="m-global-header__head">
+        <div class="m-global-header__head__inner l-container l-flex -justify-start">
+            <div id="logo">
+                <a href="/ap1/top" target="_self" class="m-global-header__logo ">
+                    <img src="/resources/jpn/images/fujifilm_corporate_logo.svg" width="152" height="42" alt="FUJIFILM Value from Innovation">
+                </a>
+            </div>
+            <span class="" id="servNm">
+                <a href="/ap1/top" target="_self" class="m-global-header__region"><img src="/ap1/img/logo_portal_jp.svg"></a>
+             </span>
+        </div>
+    </div>
+    <div class="vspace"></div>
+    <div class="m-global-header__menu js-drawer-target" id="drawer-target">
+        <div class="m-global-header__utils l-container">
+            <div class="m-global-header__utils__inner">
+                <div class="m-global-header__links">
+                    <div id="nav" class="nav_adjust_top">
+                        <ul class="utility user-info">
+                            <li style="display: inline-block;"></li>
+                        </ul>
+                        <ul class="utility user-info">
+                            <li style="display: inline-block;"></li>
+                        </ul>
+                        <ul class="utility">
+                            <li><a href="/ap1/top">ホーム</a></li>
+                            <li><a href="/ap1/sc/no_login_faq/ja/index.html" target="_self">よくあるご質問</a></li>
+                            <li><a href="/ap1/sc/no_login_contact/ja/index.html" target="_self">お問い合わせ</a></li>
+                            <li><a href="http://fujifilm.com/fb/?from=fxd" target="_blank">富士フイルムビジネスイノベーション</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mqMark"></div>
+</header>
+
+  <div class="l-components"> 
+   <!-- パンくず生成用タグ --> 
+   <!-- 消さないでください --> 
+   <div class="m-breadcrumb"></div> 
+   <div class="m-page-top js-page-top-btn"> 
+    <a class="m-page-top__btn js-smooth-scroll" href="#top"></a> 
+   </div> 
+   <div class="l-container"> 
+    <div id="content" class="lyt-type-0"> 
+     <div class="lyt-main"> 
+      <div class="m-heading-1"> 
+       <h1 class="m-heading-1__title typesquare_option"> <span class="m-heading-1__title-main typesquare_option">ソフトウェアライセンスの使用情報管理</span> </h1> 
+      </div> 
+      <div class="m-paragraph"> 
+       <div class="m-paragraph__body"> 
+        <p>本ページでは、富士フイルムBIダイレクトのソフトウェアライセンス管理画面において、弊社ソフトウェア商品のライセンス使用情報を管理する操作手順を説明します。</p> 
+       </div> 
+      </div> 
+      <div class="m-link-list">
+        <div class="m-link-list__body">
+        <ul>
+            <li><a href="#no.1" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス管理者の登録</span></a></li>
+            <li><a href="#no.2" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の確認（ライセンス認証版）</span></a></li>
+            <li><a href="#no.3" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の削除（ライセンス認証版）</span></a></li>
+            <li><a href="#no.4" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の確認（サブスクリプション版）</span></a></li>
+            <li><a href="#no.5" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の削除（サブスクリプション版）</span></a></li>
+            <li><a href="#no.6" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の確認（ボリュームライセンス版）</span></a></li>
+            <li><a href="#no.7" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の追加（ボリュームライセンス版）</span></a></li>
+            <li><a href="#no.8" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">ライセンス使用情報の一括設定（ボリュームライセンス版）</span></a></li>
+            <li><a href="#no.9" class="btn btn-link"><span class="btn-link__inner m-icon__arrow-right">コンピュータ名、OSが表示される商品バージョン一覧</span></a></li>
+        </ul>
+        <!-- /.m-link-list_body --></div>
+    <!-- /.m-link-list --></div>
+
+    <div id="no.1" class="m-heading-2">
+        <h2 class="m-heading-2__title">ライセンス管理者の登録</h2>
+    </div>
+    <div class="m-paragraph">
+    <div class="m-paragraph__body">
+    <p>ライセンス認証版とボリュームライセンス版では、次の操作により、該当ライセンスに管理者を追加することができます。<br> 
+    管理者として登録されたユーザーは、該当ライセンスの全てのライセンス使用情報を確認および削除できるようになります。</p>
+    <p>初期の管理者が未登録の場合、ライセンス認証を実施したユーザーにて管理者を追加できます。<br>
+    管理者が登録済みの場合、管理者の追加および削除は既存の管理者のみ実施できます。</p>
+    </div>
+    </div>
+
+    <div class="m-list">
+    <ul class="list-style-num">
+    <li>「ソフトウェアライセンス管理」画面で該当のシリアル番号をクリックします。
+    <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+    <img src="images/01-1.png" alt="シリアル番号クリック" width="600">
+    <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div></li>
+
+    <li>「管理者を追加」をクリックします。
+    <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+    <img src="images/01-2.png" alt="管理者追加" width="600">
+    <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div></li>
+
+    <li>管理者として追加するユーザーの富士フイルムBIダイレクトID（メールアドレス）を入力し、追加をクリックします。
+    <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+    <img src="images/01-3.png" alt="アドレス追加" width="600">
+    <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div></li>
+
+    <li>管理者情報欄に追加した管理者情報が表示されたことを確認します。
+    <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+    <img src="images/01-4.png" alt="管理者登録" width="600">
+    <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div>
+
+    <div class="m-heading-6">
+        <h6 class="m-heading-6__title">補足</h6>
+        </div>
+    <div class="m-list" style="margin-top:0px">
+        <ul class="list-style-disc">
+            <li><p>複数の管理者が登録されている場合、管理者は別の管理者を削除できます。</p>
+                <p>管理者が1名のみ登録されている場合は管理者の削除はできません。</p></li>
+            <li>サブスクリプション版ソフトウェアをご利用の場合、テナント管理者が全てのライセンス使用情報を確認および削除ができます。</li>
+        </ul>
+    </div>
+    </li>
+    </ul>
+    </div>  
+
+    <div id="no.2" class="m-heading-2">
+    <h2 class="m-heading-2__title">ライセンス使用情報の確認（ライセンス認証版）</h2>
+    </div>
+    <div class="m-paragraph">
+    <div class="m-paragraph__body">
+    <p>ライセンス認証版のソフトウェアでは、ライセンス認証を実施したユーザーまたは管理者にてライセンス使用情報が確認できます。</p>
+    </div>
+    </div>
+
+    <ul class="list-style-num">
+    <li>「ソフトウェアライセンス管理」画面で該当ライセンスの使用数をクリックします。
+        <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+        <img src="images/02-1.png" alt="使用数" width="600">
+        <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div></li>
+
+    <li>「ライセンス使用情報」画面に該当ライセンスの使用情報が表示されます。
+        <div class="m-image m-image--size_medium">
+    <div class="m-image__body">
+    <div class="m-image__img">
+        <img src="images/02-2.png" alt="ライセンス使用情報" width="600">
+        <!-- /.m-image__img --></div>
+    <!-- /.m-image__body --></div>
+    <!-- /.m-image --></div>
+    
+    <div class="m-table m-table--white">
+    <div class="m-table__body">
+    <table class="m-table__table">
+
+    <tbody class="m-table__tbody">
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">コンピュータ名</td>
+    <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータの名称<sup>※1</sup></td>
+    </tr>
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">OS</td>
+    <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータのOS情報</td>
+    </tr>
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">商品のバージョン</td>
+    <td class="m-table__cell m-table__cell--data">使用している商品のバージョン情報</td>
+    </tr>
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">利用開始日</td>
+    <td class="m-table__cell m-table__cell--data">ライセンス認証を実施した日付</td>
+    </tr>
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">最終利用確認日</td>
+    <td class="m-table__cell m-table__cell--data">ライセンスの認証状態を確認した最終の日付</td>
+    </tr>
+    <tr class="m-table__tbody-row">
+    <th class="m-table__cell m-table__cell--head">利用確認期限</td>
+    <td class="m-table__cell m-table__cell--data">インターネットに接続されていない環境ソフトウェア商品をご利用できる期限<sup>※2</sup></td>
+    </tr>
+    </tbody>
+    </table>
+    <!-- /.m-table__body --></div>
+    <!-- /.m-table --></div>
+    <div class="m-heading-6">
+        <h6 class="m-heading-6__title">補足</h6>
+        </div>
+    <div class="m-note" style="margin-top:0px">
+        <ul class="m-note-list">
+        <li class="m-caption"><span class="m-caption__mark">※1</span><span class="m-caption__text"><p>コンピュータ名およびOSは、お使いの商品・バージョンによっては表示されないことがあります。</p>
+            <p>商品ごとのコンピュータ名、OSが表示されるバージョンについては<a href="#no.9" class="btn-link-inline">コンピュータ名、OSが表示される商品バージョン一覧</a>をご確認ください。</p></span></li>
+        <li class="m-caption"><span class="m-caption__mark">※2</span><span class="m-caption__text"><p>インターネットに接続されていない環境で「利用確認期限」が経過すると、該当ライセンスのソフトウェアはご利用できなくなります。</p>
+            <p>「利用確認期限」になる前に再度ライセンス認証を実施してください。</p></span></li>
+        </ul>
+    </div>
+    </li>
+    </ul>
+
+    <div id="no.3" class="m-heading-2">
+    <h2 class="m-heading-2__title">ライセンス使用情報の削除（ライセンス認証版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+    <div class="m-paragraph__body">
+    <p>コンピュータの故障や廃棄などでライセンスの認証状態が解除できない場合、ライセンス認証を行ったユーザーまたは管理者にてライセンス使用情報を削除できます。</p>
+    </div>
+    </div>
+
+    <div class="m-list">
+    <ul class="list-style-num">
+    <li>「ライセンス使用情報」画面で削除するライセンス使用情報をチェックし「選択したライセンス使用情報を削除」をクリックします。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/02-3.png" alt="使用情報削除" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+
+    <li>削除確認のダイアログが表示されるので、内容を確認し「削除」をクリックします。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/02-4.png" alt="削除" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+
+    <li>「ライセンス使用情報」画面から削除した使用情報がなくなったことを確認します。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/02-5.png" alt="削除後" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+        <div class="m-heading-6">
+            <h6 class="m-heading-6__title">補足</h6>
+        </div>
+        <div class="m-list" style="margin-top:0px">
+            <ul class="list-style-disc">
+                <li>ソフトウェアを利用中の状態でライセンス使用情報を削除すると、一定時間（通常10日）が経過した時点で該当ソフトウェアはご利用できなくなります。</li>
+                <li>コンピュータ名、OSの情報が表示されていないライセンス使用情報は削除できません。</li>
+            </ul>
+    </div>
+    </li>
+    </ul>
+    </div>
+
+    <div id="no.4" class="m-heading-2">
+    <h2 class="m-heading-2__title">ライセンス使用情報の確認（サブスクリプション版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+    <div class="m-paragraph__body">
+    <p>サブスクリプション版のソフトウェアでは、対象ソフトウェアを使用しているユーザーまたはテナント管理者にてライセンス使用情報が確認できます。</p>
+    </div>
+    </div>
+
+    <div class="m-list">
+    <ul class="list-style-num">
+    <li>「ソフトウェアライセンス管理」画面で該当ライセンスの使用数をクリックします。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/03-1.png" alt="ライセンス使用情報" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+    <li>「ライセンス使用情報」画面に該当ライセンスの使用情報が表示されます。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/03-2.png" alt="ライセンス使用情報" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+        <div class="m-table m-table--white">
+        <div class="m-table__body">
+        <table class="m-table__table">
+
+        <tbody class="m-table__tbody">
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">コンピュータ名</td>
+        <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータの名称<sup>※1</sup></td>
+        </tr>
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">OS</td>
+        <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータのOS情報</td>
+        </tr>
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">商品のバージョン</td>
+        <td class="m-table__cell m-table__cell--data">使用している商品のバージョン情報</td>
+        </tr>
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">利用開始日</td>
+        <td class="m-table__cell m-table__cell--data">ライセンス認証を実施した日付</td>
+        </tr>
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">最終利用確認日</td>
+        <td class="m-table__cell m-table__cell--data">ライセンスの認証状態を確認した最終の日付</td>
+        </tr>
+        <tr class="m-table__tbody-row">
+        <th class="m-table__cell m-table__cell--head">利用確認期限</td>
+        <td class="m-table__cell m-table__cell--data">インターネットに接続されていない環境ソフトウェア商品をご利用できる期限<sup>※2</sup></td>
+        </tr>
+        </tbody>
+        </table>
+        <!-- /.m-table__body --></div>
+        <!-- /.m-table --></div>
+        <div class="m-heading-6">
+            <h6 class="m-heading-6__title">補足</h6>
+            </div>
+        <div class="m-note" style="margin-top:0px">
+            <ul class="m-note-list">
+            <li class="m-caption"><span class="m-caption__mark">※1</span><span class="m-caption__text"><p>コンピュータ名およびOSは、お使いの商品・バージョンによっては表示されないことがあります。</p>
+                <p>商品ごとのコンピュータ名、OSが表示されるバージョンについては<a href="#no.9" class="btn-link-inline">コンピュータ名、OSが表示される商品バージョン一覧</a>をご確認ください。</p></span></li>
+            <li class="m-caption"><span class="m-caption__mark">※2</span><span class="m-caption__text"><p>インターネットに接続されていない環境で「利用確認期限」が経過すると、該当ライセンスのソフトウェアはご利用できなくなります。</p>
+                <p>「利用確認期限」になる前に再度ライセンス認証を実施してください。</p></span></li>
+            </ul>
+        </div>
+    </li>
+    </ul>
+    </div>
+
+    <div id="no.5" class="m-heading-2">
+    <h2 class="m-heading-2__title">ライセンス使用情報の削除（サブスクリプション版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+    <div class="m-paragraph__body">
+    <p>コンピュータの故障や廃棄などでライセンスを利用している状態が解除できない場合、ライセンスを使用しているユーザーまたはテナント管理者にてライセンス使用情報を削除できます。</p>
+    </div>
+    </div>
+
+    <div class="m-list">
+    <ul class="list-style-num">
+    <li>「ライセンス使用情報」画面で削除するライセンス使用情報をチェックし、「選択したライセンス使用情報を削除」をクリックします。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/03-3.png" alt="使用情報削除" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+    <li>削除確認のダイアログが表示されるので、内容を確認し「削除」をクリックします。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/03-4.png" alt="削除" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+    <li>「ライセンス使用情報」画面から削除した使用情報がなくなったことを確認します。
+        <div class="m-image m-image--size_medium">
+        <div class="m-image__body">
+        <div class="m-image__img">
+        <img src="images/03-5.png" alt="削除後" width="600">
+        <!-- /.m-image__img --></div>
+        <!-- /.m-image__body --></div>
+        <!-- /.m-image --></div>
+    </li>
+    </ul>
+    </div>
+
+    <!-- 以下、未翻訳 -->
+
+    <div id="no.6" class="m-heading-2">
+        <h2 class="m-heading-2__title">ライセンス使用情報の確認（ボリュームライセンス版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+        <div class="m-paragraph__body">
+            <p>ボリュームライセンス版のソフトウェアでは、対象ライセンスのシリアル番号発行を行ったユーザーが初期管理者として登録され、ライセンス使用情報が確認できます。</p>
+        </div>
+    </div>
+
+    <div class="m-list">
+        <ul class="list-style-num">
+        <li>「ソフトウェアライセンス管理」画面で該当ライセンスの使用数をクリックします。
+            <div class="m-image m-image--size_medium">
+            <div class="m-image__body">
+            <div class="m-image__img">
+            <img src="images/04-1.png" alt="ライセンス使用数" width="600" />
+            <!-- /.m-image__img --></div>
+            <!-- /.m-image__body --></div>
+            <!-- /.m-image --></div>
+        </li>
+        <li>「ライセンス使用情報」画面に該当ライセンスの使用情報が表示されます。
+            <div class="m-image m-image--size_medium">
+            <div class="m-image__body">
+            <div class="m-image__img">
+            <img src="images/04-2.png" alt="ライセンス使用情報" width="600"/>
+            <!-- /.m-image__img --></div>
+            <!-- /.m-image__body --></div>
+            <!-- /.m-image --></div>
+            <div class="m-table m-table--white">
+            <div class="m-table__body">
+            <table class="m-table__table">
+
+            <tbody class="m-table__tbody">
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">コンピュータ名</td>
+            <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータの名称</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">OS</td>
+            <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータのOS情報</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">商品のバージョン</td>
+            <td class="m-table__cell m-table__cell--data">使用している商品のバージョン情報</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">利用開始日</td>
+            <td class="m-table__cell m-table__cell--data">ライセンス認証を実施した日付</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">最終利用確認日</td>
+            <td class="m-table__cell m-table__cell--data">ライセンスの認証状態を確認した最終の日付</td>
+            </tr>
+            </tbody>
+            </table>
+            <!-- /.m-table__body --></div>
+            <!-- /.m-table --></div>
+            <div class="m-heading-6">
+                <h6 class="m-heading-6__title">補足</h6>
+            </div>
+            <div class="m-list" style="margin-top:0px">
+                <ul class="list-style-disc">
+                    <li>インターネットに接続された環境でボリュームライセンス版のソフトウェア商品をご利用の場合は、ライセンス使用情報が自動で表示されます。</li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </div>
+
+    <div id="no.7" class="m-heading-2">
+        <h2 class="m-heading-2__title">ライセンス使用情報の追加（ボリュームライセンス版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+        <div class="m-paragraph__body">
+        <p>インターネットに接続されていない環境でボリュームライセンス版ソフトウェアをご利用の場合、「ライセンス使用情報」画面からライセンス使用情報の追加を行うことで、
+            富士フイルムBIダイレクトのソフトウェアライセンス管理にてご利用ライセンスの管理を行うことができます。
+        </p>
+        </div>
+    </div>
+    
+    <div class="m-list">
+        <ul class="list-style-num">
+        <li>「ライセンス使用情報」画面で、「選択したライセンス使用情報を追加」をクリックします。
+            <div class="m-image m-image--size_medium">
+            <div class="m-image__body">
+            <div class="m-image__img">
+            <img src="images/04-3.png" alt="ライセンス使用情報追加" width="600" />
+            <!-- /.m-image__img --></div>
+            <!-- /.m-image__body --></div>
+            <!-- /.m-image --></div>
+        </li>
+        <li>表示された情報入力用ダイアログに使用情報を入力し、「追加」ボタンをクリックします。
+            <div class="m-image m-image--size_medium">
+            <div class="m-image__body">
+            <div class="m-image__img">
+            <img src="images/04-4.png" alt="追加" width="600" />
+            <!-- /.m-image__img --></div>
+            <!-- /.m-image__body --></div>
+            <!-- /.m-image --></div>
+
+            <div class="m-table m-table--white">
+            <div class="m-table__body">
+            <table class="m-table__table">
+
+            <tbody class="m-table__tbody">
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">コンピュータ名</td>
+            <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータの名称</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">OS</td>
+            <td class="m-table__cell m-table__cell--data">ライセンスを使用しているコンピュータのOS情報</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">商品のバージョン</td>
+            <td class="m-table__cell m-table__cell--data">使用している商品のバージョン情報</td>
+            </tr>
+            <tr class="m-table__tbody-row">
+            <th class="m-table__cell m-table__cell--head">利用開始日</td>
+            <td class="m-table__cell m-table__cell--data">ライセンス認証を実施した日付</td>
+            </tr>
+            </tbody>
+            </table>
+            <!-- /.m-table__body --></div>
+            <!-- /.m-table --></div>
+        </li>
+        <li>「ライセンス使用情報」画面に、使用情報が追加されたことを確認します。
+            <div class="m-image m-image--size_medium">
+            <div class="m-image__body">
+            <div class="m-image__img">
+            <img src="images/04-5.png" alt="使用情報追加" width="600" />
+            <!-- /.m-image__img --></div>
+            <!-- /.m-image__body --></div>
+            <!-- /.m-image --></div>
+        </li>
+        </ul>
+    </div>
+
+    <div id="no.8" class="m-heading-2">
+        <h2 class="m-heading-2__title">ライセンス使用情報の一括設定（ボリュームライセンス版）</h2>
+    </div>
+
+    <div class="m-paragraph">
+        <div class="m-paragraph__body">
+            <p>複数のライセンス使用情報を追加する場合は、ライセンス使用情報を記載したCSVファイルをアップロードすることで一括登録が出来ます。</p>
+        </div>
+    </div>
+
+    <div class="m-list">
+              <ul class="list-style-num">
+                <li>「ライセンス使用情報」画面で、「一括設定」をクリックします。
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-6.png" alt="一括設定" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                </li>
+                <li>「ライセンス使用情報一括設定」画面にて、「テンプレートファイルのダウンロード」もしくは「追加されたライセンス使用情報のダウンロード」をクリックし、CSVファイルをダウンロードします。
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-7.png" alt="ライセンス使用情報一括設定" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                    <div class="m-heading-5">
+                        <h5 class="m-heading-5__title">「テンプレートファイルのダウンロード」の場合</h5>
+                    </div>
+                    <ul>
+                    ライセンス使用情報登録用のテンプレートCSVファイルをダウンロードします。
+                    </ul>
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-8.png" alt="登録用CSVファイルダウンロード" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                    <div class="m-heading-5">
+                        <h5 class="m-heading-5__title">「追加されたライセンス使用情報のダウンロード」の場合</h5>
+                    </div>
+                    <ul>
+                    既に登録されているライセンス使用情報を含んだCSVファイルをダウンロードします。
+                    </ul>
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-9.png" alt="登録済みCSVファイルダウンロード" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                </li>
+                <li>CSVファイルにライセンス使用情報を追記し、アップロードします。
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-10.png" alt="CSV選択" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-11.png" alt="選択OK" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                </li>
+                <li>「一括設定処理結果一覧」画面に、アップロードしたCSVファイルの処理結果が「成功」として表示されたことを確認します。
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-12.png" alt="CSVファイルアップロード成功" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                </li>
+                <li>「ライセンス使用情報画面へ戻る」をクリックし、「ライセンス使用情報」画面にライセンス使用情報が追加されていることを確認します。
+                    <div class="m-image m-image--size_medium">
+                    <div class="m-image__body">
+                    <div class="m-image__img">
+                    <img src="images/04-13.png" alt="ライセンス情報追加" width="600" />
+                    <!-- /.m-image__img --></div>
+                    <!-- /.m-image__body --></div>
+                    <!-- /.m-image --></div>
+                </li>
+                <div class="m-heading-6">
+                    <h6 class="m-heading-6__title">補足</h6>
+                </div>
+                <div class="m-list" style="margin-top:0px">
+                    <ul class="list-style-disc">
+                        <li><p>一括設定を行った場合、過去に追加したライセンス使用情報は削除され、新たに追加した使用情報に置き換わります。</p>
+                            <p>使用情報を追加する場合は、既存のライセンス使用情報CSVファイルをダウンロードし、そのファイルに使用情報を追記してください。</p></li>
+                    </ul>
+                </div>
+              </ul>
+            </div>
+
+            <!-- 以上、未翻訳 -->
+
+            <div id="no.9" class="m-heading-2">
+              <h2 class="m-heading-2__title">
+                コンピュータ名、OSが表示される商品バージョン一覧
+              </h2>
+            </div>
+
+            <div class="m-table m-table--black">
+              <div class="m-table__body">
+                <table class="m-table__table">
+                  <colgroup class="m-table__col m-table__col--40"></colgroup>
+                  <colgroup class="m-table__col m-table__col--60"></colgroup>
+
+                  <thead class="m-table__thead">
+                    <tr class="m-table__thead-row">
+                      <th class="m-table__cell m-table__cell--head">
+                        ソフトウェア商品名
+                      </th>
+                      <th class="m-table__cell m-table__cell--head">
+                        コンピュータ名、OSが表示されるバージョン
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="m-table__tbody">
+                    <tr class="m-table__tbody-row">
+                      <td class="m-table__cell m-table__cell--data">
+                        DocuWorks 9
+                      </td>
+                      <td class="m-table__cell m-table__cell--data" rowspan="3">
+                        9.0.7以降のバージョン
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="m-table__tbody">
+                    <tr class="m-table__tbody-row">
+                      <td class="m-table__cell m-table__cell--data">
+                        DocuWorks 9.1
+                      </td>
+                      <td class="m-table__cell m-table__cell--data" rowspan="3">
+                        9.1.0以降のバージョン
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="m-table__tbody">
+                    <tr class="m-table__tbody-row">
+                      <td class="m-table__cell m-table__cell--data">
+                        DocuWorks トレイ 2
+                      </td>
+                      <td class="m-table__cell m-table__cell--data" rowspan="3">
+                        2.1.2以降のバージョン
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="m-table__tbody">
+                    <tr class="m-table__tbody-row">
+                      <td class="m-table__cell m-table__cell--data">
+                        DocuWorks 文書情報エントリー 2
+                      </td>
+                      <td class="m-table__cell m-table__cell--data" rowspan="3">
+                        2.2.0以降のバージョン
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="m-table__tbody">
+                    <tr class="m-table__tbody-row">
+                      <td class="m-table__cell m-table__cell--data">
+                        GP Controller
+                      </td>
+                      <td class="m-table__cell m-table__cell--data" rowspan="3">
+                        3.0.0以降のバージョン
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- /.m-table__body -->
+              </div>
+              <!-- /.m-table -->
+            </div>
+            <div class="m-heading-6">
+                    <h6 class="m-heading-6__title">補足</h6>
+                </div>
+                <div class="m-list" style="margin-top:0px">
+                    <ul class="list-style-disc">
+                        <li>「ライセンス使用情報」画面では、上記一覧の商品・バージョン欄に記載されたソフトウェア利用時にコンピュータ名、OSの情報が表示されます。</li>
+                    </ul>
+            </div>
+            <!-- /.m-list -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<footer class="m-global-footer__wrap">
+    <div class="l-container">
+        <p class="m-copyright ">2021年4月1日、富士ゼロックスは富士フイルムビジネスイノベーションへ社名を変更しました。<br>当社はゼロックスあるいは富士ゼロックスブランドで販売した商品の保守サービスを今後も継続いたします。<br>Xerox、Xerox ロゴ、およびFuji Xerox ロゴは、米国ゼロックス社の登録商標または商標です。</p>
+    </div>
+    <nav class="m-global-footer">
+        <div class="l-container">
+            <div class="m-global-footer__body">
+                <div class="m-global-footer__body__inner">
+                    <ul class="utility">
+                        <li class="m-global-footer__item">
+                            <a class="m-global-footer__anchor" href="/ap1/sc/no_login_terms/ja/index.html" target="_blank" data-external="official">利用規約</a>
+                        </li>
+                        <li class="m-global-footer__item">
+                            <a class="m-global-footer__anchor" href="/ap1/sc/privacy_policy_fbd/ja/index.html" target="_blank" data-external="official">プライバシーポリシー</a>
+                        </li>
+                        <li class="m-global-footer__item">
+                            <a class="m-global-footer__anchor" href="http://www.fujifilm.com/fb/common/terms_of_use/" target="_blank" data-external="official">ご利用上の注意</a>
+                        </li>
+                        <li class="m-global-footer__item">
+                            <a class="m-global-footer__anchor" href="http://www.fujifilm.com/fb/company/" target="_blank" data-external="official">企業情報</a>
+                        </li>
+                    </ul>
+                </div>
+                <p id="copyright">
+                    <a href='http://fujifilm.com/fb/common/copyright/' target="_blank">
+                        <small class="m-global-footer__copyright">&copy;富士フイルムビジネスイノベーション株式会社</small>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>
+
+<div style="padding: 0px; margin: 0px; display: block; width: 1em; position: absolute; left: -999em; top: -999em; border-style: none; overflow: hidden; height: 10000px;">
+</div>
+</body>
+
+</html> 

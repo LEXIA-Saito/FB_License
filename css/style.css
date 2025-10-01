@@ -1,0 +1,132 @@
+﻿/* CSS Document */
+
+.img-border {
+border: 1px #008D8D solid;
+}
+#nav-local > ul > li > p {
+margin-top: 15px;
+margin-bottom: 0px;
+font-weight: bold;
+}
+
+
+/* .note
+----------------------------------------------- */
+
+.note{
+margin-top:10px;
+margin-bottom:15px;
+}
+.note li {
+margin-bottom:6px;
+margin-left:10px;
+padding-left:12px;
+position:relative;
+}
+
+.note > li:before{
+content:"";
+display:block;
+width:6px;
+height:6px;
+overflow:hidden;
+position:absolute;
+top:6px;
+left:0;
+}
+
+.note > li:before{
+background-color:#666666;
+border-radius:5px;
+background-clip:padding-box;
+}
+.note > li p, .note > li ul, .note > li dl{
+margin:5px 0 10px 20px;
+}
+.note > li table{
+margin:5px 0 10px;
+}
+.note > li ol{
+margin-left:2em;
+}
+
+.notetitle:before {
+content: "注記";
+font-weight: bold;
+color: #205CA1;
+}
+
+.refertitle:before {
+content: "参照";	
+font-weight: bold;
+color:#158757;
+}
+
+.suptitle:before {
+content: "補足";	
+font-weight: bold;
+color:#D95716;
+}
+
+
+
+/* 追加
+----------------------------------------------- */
+.icon-new {
+margin: 1px 3px 0;
+padding: 2px 5px;
+border: 1px #fb0020 solid;
+color: #fb0020;
+display: inline-block;
+line-height: 1;
+vertical-align: top;
+background-image: linear-gradient(#ffffff, #D8D8D8 50%, #ffffff 65%, #ffffff);
+background-color: #fff;
+font-size: 84.615%;
+font-weight: bold;
+}
+
+.box {
+margin-bottom: 15px;
+padding: 10px;
+border: 1px #EDEDED solid;
+border-radius: 5px;
+background-clip: padding-box;
+background-color: #fff;
+}
+
+/* index.html */
+.index .lyt-main {
+flex: 0 0 100%!important;
+width: 100%!important;
+max-width: 100%!important;
+padding-top: 2rem;
+padding-bottom: 1rem;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+
+.index .wr {
+display: flex;
+flex-wrap: wrap;
+justify-content: left;
+margin: auto;
+/* max-width: 980px; */
+height: auto;
+}
+
+.index .bar {
+width: 50%;
+text-align: left;
+}
+.index .bar .list-style-disc {
+margin-bottom: 15px;
+}
+@media print, screen and (max-width: 768px){
+.index .wr {
+display: block;
+}
+.index .bar {
+width: 100%;
+}
+}
